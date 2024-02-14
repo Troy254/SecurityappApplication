@@ -36,5 +36,6 @@ public class MessagingConfig {
   public Binding binding(Queue queue,TopicExchange topicExchange) {
     return BindingBuilder.bind(queue).to(topicExchange).with("user.#");
   }
+
 }
 
