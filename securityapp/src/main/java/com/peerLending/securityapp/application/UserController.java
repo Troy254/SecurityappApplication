@@ -37,5 +37,4 @@ public class UserController {
         .orElseThrow(UserNotFoundException::new).getUsername();
   }
 
-
 }
