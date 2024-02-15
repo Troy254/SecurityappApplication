@@ -1,5 +1,6 @@
 package com.peerLending.securityapp.application;
 
+import com.peerLending.securityapp.user.dto.SecurityUsersDTO;
 import com.peerLending.securityapp.user.model.SecurityUsers;
 import com.peerLending.securityapp.user.repository.UserRepository;
 import com.peerLending.securityapp.user.exception.UserNotFoundException;
@@ -25,11 +26,11 @@ public class UserController {
   }
 
   @PostMapping("/register")
-  public void register(@RequestBody SecurityUsers securityUsers) {
+  public void register(@RequestBody SecurityUsersDTO securityUsersDTO) {
+    SecurityUsers securityUsers = new SecurityUsers(securityUsersDTO.getUsername(),securityUsersDTO.getPassword());
     userRepository.save(securityUsers);
-    notificationService.sendMessage(securityUsers);
+    notificationService.sendMessage(securityUsersDTO);
   }
-
 
   @PostMapping("/validate")
   public String validateTokenAndGetUsername(@RequestHeader("Authorization") String token) {
