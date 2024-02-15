@@ -33,9 +33,8 @@ public class MessagingConfig {
   }
 
   @Bean
-  public Binding binding(Queue queue,TopicExchange topicExchange) {
+  public Binding binding(Queue queue, TopicExchange topicExchange){
     return BindingBuilder.bind(queue).to(topicExchange).with("user.#");
   }
-
 }
 
