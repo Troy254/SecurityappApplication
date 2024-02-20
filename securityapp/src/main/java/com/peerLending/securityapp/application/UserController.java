@@ -37,5 +37,4 @@ public class UserController {
     return userRepository.findById(token)
         .orElseThrow(UserNotFoundException::new).getUsername();
   }
-
 }
