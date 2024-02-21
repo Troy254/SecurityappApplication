@@ -15,26 +15,27 @@ public class MessagingConfig {
   private static final String QUEUE_NAME = "user.registered";
 
   @Bean
-  public Queue userRegisteredQueue(){
+  public Queue userRegisteredQueue() {
 
     return new Queue(QUEUE_NAME, false);
   }
 
   @Bean
-  public TopicExchange userRegisteredTopic(){
+  public TopicExchange userRegisteredTopic() {
 
     return new TopicExchange(TOPIC);
   }
 
   @Bean
-  ConnectionFactory connectionFactory(){
+  ConnectionFactory connectionFactory() {
     ConnectionFactory connectionFactory = new ConnectionFactory();
     return connectionFactory;
   }
 
   @Bean
-  public Binding binding(Queue queue, TopicExchange topicExchange){
+  public Binding binding(Queue queue, TopicExchange topicExchange) {
     return BindingBuilder.bind(queue).to(topicExchange).with("user.#");
   }
+
 }
 
