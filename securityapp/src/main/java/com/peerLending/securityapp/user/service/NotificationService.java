@@ -22,4 +22,5 @@ public class NotificationService {
     rabbitTemplate.convertAndSend("userRegisteredTopic", "user.registered",
         GSON.toJson(securityUsersDTO));
   }
+
 }
